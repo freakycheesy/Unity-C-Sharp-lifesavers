@@ -9,9 +9,6 @@ public class ConnectionState : MonoBehaviourPunCallbacks
     public TMP_Text[] connectionTexts;
     public string connectionState;
 
-    // For Mindless Physics ;)
-    public Toggle OnlineToggle;
-
     public override void OnConnectedToMaster() {
         connectionState = "Connected To Master";
         ChangeConnectionTexts(Color.green);
@@ -71,14 +68,6 @@ public class ConnectionState : MonoBehaviourPunCallbacks
     }
 
     private void ChangeConnectionTexts(Color newColor) {
-        if (OnlineToggle != null) {
-            if (PhotonNetwork.IsConnected) {
-                OnlineToggle.onValueChanged.Invoke(true);
-            }
-            else {
-                OnlineToggle.onValueChanged.Invoke(false);
-            }
-        }    
         if (connectionTexts == null)
             return;
         foreach (var text in connectionTexts) {
