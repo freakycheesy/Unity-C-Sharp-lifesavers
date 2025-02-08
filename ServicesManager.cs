@@ -10,6 +10,8 @@ using Unity.Netcode;
 using Netcode.Transports.PhotonRealtime;
 using System;
 
+/* Used for connecting players over the network using netcode for gameobjects and photon realtime*/
+
 public class ServicesManager : MonoBehaviour, IMatchmakingCallbacks
 {
     public static ServicesManager Instance { get; private set;}
