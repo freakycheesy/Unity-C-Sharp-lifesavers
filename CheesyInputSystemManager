@@ -1,0 +1,70 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class InputActionManager : MonoBehaviour
+{
+    public static List<InputActionAsset> Assets;
+    [SerializeField] private List<InputActionAsset> assets;
+
+    #region Single
+    public static void AddAsset(InputActionAsset asset, bool enableAsset = true)
+    {
+        Assets.Add(asset);
+        if (enableAsset) EnableAsset(asset);
+    }
+
+    public static void RemoveAsset(InputActionAsset asset, bool disableAsset = true)
+    {
+        Assets.Remove(asset);
+        if (disableAsset) DisableAsset(asset);
+    }
+
+
+    public static void EnableAsset(InputActionAsset asset)
+    {
+        asset.Enable();
+    }
+
+    public static void DisableAsset(InputActionAsset asset)
+    {
+        asset.Disable();
+    }
+    #endregion
+    #region Multiple
+    public static void AddAssets(InputActionAsset[] assets, bool enableAsset = true)
+    {
+        foreach (var asset in assets)
+        {
+            Assets.Add(asset);
+        }
+        if (enableAsset) EnableAssets(assets);
+    }
+
+    public static void RemoveAssets(InputActionAsset[] assets, bool disableAsset = true)
+    {
+        foreach (var asset in assets)
+        {
+            Assets.Remove(asset);
+        }
+        if (disableAsset) DisableAssets(assets);
+    }
+
+
+    public static void EnableAssets(InputActionAsset[] assets)
+    {
+        foreach (var asset in assets)
+        {
+            asset.Enable();
+        }
+    }
+
+    public static void DisableAssets(InputActionAsset[] assets)
+    {
+        foreach (var asset in assets)
+        {
+            asset.Disable();
+        }
+    }
+    #endregion
+}
