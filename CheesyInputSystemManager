@@ -5,7 +5,23 @@ using UnityEngine.InputSystem;
 public class InputActionManager : MonoBehaviour
 {
     public static List<InputActionAsset> Assets;
-    [SerializeField] private List<InputActionAsset> assets;
+    [SerializeField] private InputActionAsset[] assets;
+
+    void Awake()
+    {
+        AddAssets(assets);
+        EnableAssets();
+    }
+
+    public static void EnableAssets()
+    {
+        EnableAssets(Assets.ToArray());
+    }
+
+    public static void DisableAssets()
+    {
+        DisableAssets(Assets.ToArray());
+    }
 
     #region Single
     public static void AddAsset(InputActionAsset asset, bool enableAsset = true)
