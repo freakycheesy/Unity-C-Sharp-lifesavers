@@ -9,6 +9,7 @@ public class InputActionManager : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(this);
         AddAssets(assets);
         EnableAssets();
     }
